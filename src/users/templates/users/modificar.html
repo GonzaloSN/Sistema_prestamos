@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block css %}
+<style>
+  .change-password {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5 class="box-title">Editar usuario</h5>
+        </div>
+        <div class="ibox-content">
+          <form action="" method="post" role="form" autocomplete="off">
+            <div class="box-body">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+            </div>
+            <div class="box-footer">
+              <a href="{% url 'usuario:listar' %}" data-original-title="Volver al listado" data-toggle="tooltip"
+                 class="btn btn-primary">
+                 <i class="fa fa-reply" aria-hidden="true"></i>
+                 Volver al listado
+              </a>
+              <button type="submit" class="btn btn-primary pull-right">
+                <i class="fa fa-plus" aria-hidden="true"></i> Editar usuario
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

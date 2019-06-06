@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block head_title %}Not found{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/errors.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="error-box text-center animated fadeInDown">
+	<h1>404</h1>
+	<h3 class="font-bold">Página no encontrada</h3>
+	<div class="error-desc">
+        La página a la que intenta acceder no existe.
+    </div>
+    <div class="error-desc">
+        Lo sentimos, la página que está buscando no se pudo encontrar. Compruebe si la URL tiene algún error, luego presione el botón de recarga en su navegador
+    </div>
+</div>
+{% endblock %}

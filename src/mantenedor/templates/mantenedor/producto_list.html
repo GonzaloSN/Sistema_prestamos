@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Producto-Listar</title>
+</head>
+{% extends 'base/base.html' %}
+{% block content %}
+<div id="" class="gray-bg"><br>
+	{% if object_list %}
+	<h1>LISTA DE PRODUCTOS</h1>
+
+	  <div class="search-form" class="col-md-4">
+		<form id="search-form" action="" method="get">
+		  <div class="input-group">
+			<input type="text" name="q" class="form-control" value="{{ q }}" placeholder="Buscar: Código, Marca o Descripción" autofocus/>
+			<span class="input-group-addon" onclick="document.getElementById('search-form').submit()">
+			  <i class="fa fa-search"></i>
+			</span>
+		  </div>
+		</form>
+	  </div>
+
+	<div class="table-responsive"/>
+	<hr>
+	<div class="alert alert-success" role="alert">
+		Los productos que actualmente estan en <strong>"Prestamo"</strong> no apareceran en lista
+	</div>
+	<table class="table table-bordered">
+		<thead>
+		<tr>
+			<td>Codigo</td>
+			<td>Marca</td>
+			<td>Categoria</td>
+			<td>Descripcion</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for producto_list in object_list %}
+		<tr>
+			<td>{{producto_list.codigo}}</td>
+			<td>{{producto_list.marca}}</td>
+			<td>{{producto_list.id_categoria_id}}</td>
+			<td>{{producto_list.descripcion}}</td>
+			<td style="border :1px solid transparent ">
+				<a class="btn btn-primary" href="{% url 'mantenedor:producto_editar' producto_list.id %}"><i class="ion-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>
+              	<a class="btn btn-danger" href="{% url 'mantenedor:producto_estado' producto_list.id %}"> <i class="ion-android-delete" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></a>
+			</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+
+
+	{% else %}
+
+	<div>
+		<h1>Sin registros de productos o actualmente estan en mantención</h1>
+		<hr>
+		<td>
+			<a class="btn btn-primary" href="{% url 'mantenedor:producto_crear' %}"> <i class="ion-plus-round"></i> Agregar Registro </a>
+		</td>
+		{% endif %}
+
+	</div>
+</div>
+{% endblock %}
+</html>

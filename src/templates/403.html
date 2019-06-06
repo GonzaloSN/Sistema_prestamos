@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block head_title %}Access denied{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/errors.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="error-box text-center animated fadeInDown">
+	<h1>403</h1>
+	<h3 class="font-bold">Acceso denegado</h3>
+	<div class="error-desc h4">
+        <b>No tiene los permisos necesarios para acceder a esta página..</b>
+    </div>
+</div>
+{% endblock %}

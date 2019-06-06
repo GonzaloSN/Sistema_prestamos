@@ -1,0 +1,26 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Sign Out{% endblock %}
+
+{% block content %}
+<h2>¿Está seguro que desea cerrar sesión?</h2>
+
+<form method="post" action="{% url 'account_logout' %}" target="_top">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+
+<a href="{% url 'home:dashboard' %}" data-original-title="Volver" data-toggle="tooltip"
+                        class="btn btn-primary">
+                        <i  aria-hidden="true"></i>
+                        Volver
+                    </a>
+
+  <button class="btn btn-danger" type="submit">Cerrar sesión</button>
+</form>
+
+
+{% endblock %}

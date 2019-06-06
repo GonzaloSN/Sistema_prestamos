@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    {{ form.media }}
+</head>
+
+<!--<script>-->
+    <!--$(document).ready(function() {-->
+        <!--$('#usuario').select2({-->
+            <!--width:'100%',-->
+            <!--theme: 'default',-->
+            <!--language : 'es',-->
+            <!--placeholder: 'Seleccione Usuario'-->
+        <!--});-->
+    <!--});-->
+
+<!--</script>-->
+
+<body>
+{%block content%}
+<div class="col-sm-12">
+    <form method="POST" action="" id="FormularioEventos">
+        {% csrf_token %}
+          {{form.as_p}}
+
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}

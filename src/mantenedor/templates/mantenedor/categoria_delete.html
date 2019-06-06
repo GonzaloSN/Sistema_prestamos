@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Categoria-Eliminar</title>
+  </head>
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h3>¿Desea eliminar el registro de categoria "{{ categoria.nombre}}" ?</h3>
+    <button class = "btn btn-danger" type="submit">Si, eliminar</button>
+    <a class = "btn btn-default" href="{% url 'mantenedor:categoria_listar' %}">Cancelar</a>
+
+</form>
+</html>
+{% endblock %}

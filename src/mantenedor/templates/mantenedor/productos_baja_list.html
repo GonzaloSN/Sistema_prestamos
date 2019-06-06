@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Producto-Listar-Dados Baja</title>
+</head>
+{% extends 'base/base.html' %}
+{% block content %}
+<div id="" class="gray-bg"><br>
+	{% if object_list %}
+	<h1>LISTA DE PRODUCTOS DADOS DE BAJA</h1>
+
+	  <div class="search-form" class="col-md-4">
+		<form id="search-form" action="" method="get">
+		  <div class="input-group">
+			<input type="text" name="q" class="form-control" value="{{ q }}" placeholder="Buscar: Código, Marca o Descripción" autofocus/>
+			<span class="input-group-addon" onclick="document.getElementById('search-form').submit()">
+			  <i class="fa fa-search"></i>
+			</span>
+		  </div>
+		</form>
+	  </div>
+
+	<div class="table-responsive"/>
+	<hr>
+
+	<table class="table table-bordered">
+		<thead>
+		<tr>
+			<td>Codigo</td>
+			<td>Marca</td>
+			<td>Categoria</td>
+			<td>Descripcion</td>
+		</tr>
+		</thead>
+		<tbody>
+		{% for producto_list in object_list %}
+		<tr>
+			<td>{{producto_list.codigo}}</td>
+			<td>{{producto_list.marca}}</td>
+			<td>{{producto_list.id_categoria_id}}</td>
+			<td>{{producto_list.descripcion}}</td>
+			<td style="border :1px solid transparent ">
+				<a class="btn btn-primary" href="{% url 'mantenedor:producto_editar' producto_list.id %}"><i class="ion-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>
+			</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<h1>Sin registros</h1>
+	{% endif %}
+</div>
+</html>
+</html>
+{% endblock %}

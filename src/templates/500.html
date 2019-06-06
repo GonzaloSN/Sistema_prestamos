@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block head_title %}Internal Error{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/errors.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="error-box text-center animated fadeInDown">
+	<h1>500</h1>
+	<h3 class="font-bold">Internal Server Error</h3>
+	<div class="error-desc">
+		Se produjo un error en el servidor, esto ya fue notificado al administrador
+    </div>
+</div>
+{% endblock %}

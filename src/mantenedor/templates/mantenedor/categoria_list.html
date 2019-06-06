@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Categoria-Listar</title>
+</head>
+{% extends 'base/base.html' %}
+{% block content %}
+<div id="" class="gray-bg"><br>
+	{% if object_list %}
+	<div class="table-responsive"/>
+	<h1>LISTA DE CATEGORIAS</h1>
+	<hr>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<td>Nombre</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for categoria_list in object_list %}
+			<tr>
+				<td>{{categoria_list.nombre}}</td>
+        <td style="border :1px solid transparent ">
+					    <a class="btn btn-primary" href="{% url 'mantenedor:categoria_editar' categoria_list.id %}"><i class="ion-edit"></i> Editar</a>
+              <a class="btn btn-danger" href="{% url 'mantenedor:categoria_eliminar' categoria_list.id %}"> <i class="ion-android-delete"></i> Eliminar</a>
+        </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<h1>No hay registros de categoria</h1>
+	<hr>
+	<td>
+		<a class="btn btn-primary" href="{% url 'mantenedor:categoria_crear' %}"> <i class="ion-plus-round"></i> Agregar Registro </a>
+	</td>
+	{% endif %}
+</div>
+</div>
+ </html>
+{% endblock %}

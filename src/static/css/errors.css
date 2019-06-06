@@ -1,0 +1,9 @@
+.error-box {
+    max-width: 400px;
+    z-index: 100;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+h1 {
+	font-size: 170px !important;
+}

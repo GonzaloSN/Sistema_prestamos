@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{%for abc in obj%}
+<div class="panel panel-primary">
+
+    <div class="panel-heading">
+            <i class="fas fa-chevron-circle-down"></i> Usuario: {{abc.usuario.username}}</div>
+    <ul class="list-group">
+        <li class="list-group-item">Nombre Evento: {{abc.nombre}}</li>
+        <li class="list-group-item">Fecha Inicio: {{abc.fechaInicio}}</li>
+        <li class="list-group-item">Fecha Termino: {{abc.fechaTermino}}</li>
+    </ul>
+
+</div>
+{%endfor%}
+</body>
+</html>

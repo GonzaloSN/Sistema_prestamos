@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Prestamos-Registrar</title>
+
+</head>
+    {% extends 'base/base.html' %}
+<body>
+{%block content%}
+    <div class="row">
+        <div class="col-sm-8">
+            <h1>REGISTRO DE PRESTAMOS</h1>
+            <form method="POST" action="">
+                    {% csrf_token%}
+                    {{form.as_p}}
+                    <input id="validar" class="btn btn-primary" value='Realizar Prestamo'>
+            </form>
+            <br>
+        </div>
+    </div>
+
+<script>
+    function alerta() {
+        alertify.error("El estado debe quedar <strong>\"Activo\"</strong>");
+    }
+
+    $('#validar').click(function() {
+        var estado = document.getElementById("estadoPrestamo");
+        var seleccion = estado.options[estado.selectedIndex].text;
+        if (seleccion === "Inactivo") {
+            alerta();
+            document.getElementById("estadoPrestamo").focus();
+        } else {
+            this.form.submit();
+        }
+    });
+</script>
+</body>
+</html>
+{%endblock%}
+
+
+
+
+

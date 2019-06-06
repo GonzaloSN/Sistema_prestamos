@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{%for abc in obj%}
+<div class="panel panel-success">
+
+    <div class="panel-heading">
+            <i class="fas fa-circle"></i> Usuario: {{abc.username}}</div>
+    <ul class="list-group">
+        <li class="list-group-item">Nombre: {{abc.first_name}}</li>
+        <li class="list-group-item">Apellido: {{abc.last_name}}</li>
+        <li class="list-group-item">Correo Electronico: {{abc.email}}</li>
+    </ul>
+
+</div>
+{%endfor%}
+</body>
+</html>

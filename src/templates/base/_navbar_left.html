@@ -1,0 +1,260 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs"> <strong class="font-bold"><i class="fas fa-user-circle"></i> {{ user.username }}</strong></span>
+                            <span class="text-muted text-xs block">
+                                {% if user.is_staff %}
+                                    Administrador
+                                {% else %}
+                                    <div class="dropdown profile-element">
+                                        {{ user.groups.all.0.name }}
+                                    </div>
+                                    <div class="dropdown profile-element">    
+                                        {{ user.groups.all.1.name }}
+                                    </div>
+                                    <div class="dropdown profile-element"> 
+                                        {{ user.groups.all.2.name }}
+                                    </div>    
+                                    <div class="dropdown profile-element">
+                                        {{ user.groups.all.3.name }}
+                                    </div>
+                                {% endif %}
+                                <b class="caret"></b>
+                            </span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        {% if user.is_superuser %}
+                            <li>
+                                <a href="/admin/" target="_blank">
+                                    <i class="fa fa-cog"></i> Administrar
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        {% endif %}
+                        <li>
+                            <a href="{% url 'account_change_password' %}">
+                                <i class="fa fa-key"></i>
+                                Cambiar contraseña
+                            </a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="{% url 'account_logout' %}">
+                                <i class="fas fa-sign-out-alt"> </i>
+                                Cerrar Sesion
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo-element"><i class="fas fa-user-circle"></i></div>
+            </li>
+
+
+            <li class="#">
+              <a href="{% url 'home:index' %}">
+                <i class="fa fa-home" data-toggle="tooltip" data-placement="right" title="Home"></i>
+                <span class="nav-label">Inicio</span>
+              </a>
+            </li>
+
+              <li class="#">
+              <a href="{% url 'home:dashboard' %}">
+                <i class="fas fa-chart-line" data-toggle="tooltip" data-placement="right" title="Dashboard"></i>
+                <span class="nav-label">Dashboard</span>
+              </a>
+            </li>
+
+
+                            <!-- Usuario -->
+
+            {% if perms.auth.view_user or perms.auth.add_user %}
+            <li class="#">
+              <a href="#">
+                <i class="fas fa-users" data-toggle="tooltip" data-placement="right" title="Usuarios"></i>
+                <span class="nav-label">Usuarios</span>
+                <span class="fa arrow"></span>
+              </a>
+              <ul class="nav nav-second-level collapse">
+                <li class="">
+                  <a href="{% url 'usuario:listar' %}">
+                    <i class="fa fa-list"></i>Listar
+                  </a>
+                </li>
+                {% if perms.auth.add_user %}
+                <li class="">
+                  <a href="{% url 'usuario:registrar' %}">
+                    <i class="fa fa-plus"></i>Registrar
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </li>
+            {% endif %}
+
+            <!---------------- Mantenedor ----------------------->
+            {% if perms.mantenedor.add_producto %}
+            <li class="#">
+                <a href="#">
+                    <i class="fas fa-pen-square" data-toggle="tooltip" data-placement="right" title="Mantenedor"></i>
+                    <span class="nav-label">Mantenedor</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+
+                    {% if perms.mantenedor.add_producto %}
+                    <li class="#">
+                        <a href="#">
+                            <i class="fas fa-chevron-circle-right"></i>
+                            <span class="nav-label">Producto</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-third-level collapse">
+                            <li class="">
+                                <a href="{% url 'mantenedor:producto_listar' %}">
+                                    <i class="fas fa-bars"></i>Listar
+                                </a>
+                            </li>
+                    {% if perms.mantenedor.add_producto %}
+                            <li class="#">
+                                <a href="{% url 'mantenedor:producto_crear' %}">
+                                    <i class="fas fa-plus-circle"></i>Registrar
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li class="#">
+                                <a href="{% url 'mantenedor:producto_listar_mantencion' %}">
+                                    <i class="fas fa-wrench"></i>En Mantencion
+                                </a>
+                            </li>
+
+                            <li class="#">
+                                <a href="{% url 'mantenedor:producto_listar_baja' %}">
+                                    <i class="fas fa-trash"></i>Dados de Baja
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+
+                <!--Categoria-->
+                    {% if perms.mantenedor.add_categoria %}
+                     <li class="#">
+                        <a href="#">
+                            <i class="fas fa-chevron-circle-right"></i>
+                            <span class="nav-label">Categoria</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-third-level collapse">
+                            <li class="">
+                                <a href="{% url 'mantenedor:categoria_listar' %}">
+                                    <i class="fas fa-bars"></i>Listar
+                                </a>
+                            </li>
+                            {% if perms.mantenedor.add_categoria %}
+                            <li class="">
+                                <a href="{% url 'mantenedor:categoria_crear' %}">
+                                    <i class="fas fa-plus-circle"></i>Registrar
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </li>
+
+
+
+
+
+            {% if perms.prestamos.add_prestamos %}
+            <li class="#">
+                <a href="#">
+                    <i class= "fas fa-handshake"data-toggle="tooltip" data-placement="right" title="Prestamos"></i>
+                    <span class="nav-label">Prestamos</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li class="">
+                        <a href="{% url 'prestamos:prestamo_listar' %}">
+                            <i class="fas fa-bars"></i>Listar Prestamos
+                        </a>
+                    </li>
+                {% if perms.prestamos.add_prestamos %}
+                    <li class="">
+                        <a href=" {% url 'prestamos:prestamo_crear' %}">
+                            <i class="fas fa-plus-circle"></i>Nuevo Prestamo
+                        </a>
+                    </li>
+                {% endif %}
+                    <li class="">
+                        <a href=" {% url 'prestamos:devolucion_listar' %}">
+                            <i class="fas fa-undo-alt"></i>Historial Devoluciones
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href=" {% url 'prestamos:retrasos' %}">
+                            <i class="fas fa-clock"></i>Usuarios con Atrasos en Devolucion
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href=" {% url 'prestamos:danos' %}">
+                            <i class="fas fa-exclamation-triangle"></i>Usuarios con Daños en Productos
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        {% endif %}
+
+
+             <li class="#">
+                  <a href="#">
+                    <i class="fas fa-chart-bar" data-toggle="tooltip" data-placement="right" title="Reportes"></i>
+                    <span class="nav-label">Reportes</span>
+                    <span class="fa arrow"></span>
+                  </a>
+                  <ul class="nav nav-second-level collapse">
+                    <li class="">
+                      <a href="{% url 'reportes:hom' %}">
+                        <i class="fas fa-file-alt"></i>Generar Reportes
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+
+             <li class="#">
+                  <a href="#">
+                    <i class="fas fa-desktop" data-toggle="tooltip" data-placement="right" title="Laboratorio"></i>
+                    <span class="nav-label">Laboratorio</span>
+                    <span class="fa arrow"></span>
+                  </a>
+                  <ul class="nav nav-second-level collapse">
+                    <li class="">
+                      <a href="{% url 'laboratorio:calendar' %}">
+                        <i class="fas fa-eye"></i>Ver Horario
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+    </div>
+</nav>
+<script>
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>

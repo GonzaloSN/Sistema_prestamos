@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Categoria-Registrar</title>
+</head>
+<body>
+    {% extends 'base/base.html'%}
+
+    {%block content%}
+
+    <div class="col-sm-8">
+        <h1>REGISTRO DE CATEGORIA</h1>
+        <hr>
+        <form method="POST" action="">
+            {% csrf_token%}
+            {{form.as_p}}
+            <hr>
+            <input type='submit' class="btn btn-primary" value='Guardar Registro'>
+
+        </form>
+    </div>
+
+
+</body>
+</html>
+{%endblock%}

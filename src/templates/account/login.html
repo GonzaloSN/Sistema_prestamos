@@ -1,0 +1,32 @@
+{% extends "account/base.html" %}
+
+{% load bootstrap3 %}
+
+{% block head_title %}Iniciar Sesion{% endblock %}
+
+{% block content %}
+    <div>
+
+        <div>
+          <img id="profile-img" class="img-circle" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png">
+        </div>
+
+        <form class="m-t" method="POST" action="{% url 'account_login' %}" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form_errors form %}
+            {% bootstrap_field form.login show_label=False bound_css_class='' %}
+            {% bootstrap_field form.password show_label=False bound_css_class='' %}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button class="btn btn-success block full-width m-b">Iniciar Sesion</button>
+                        
+
+            <a href="{% url 'password_reset' %}"><small>Olvidé mi Contraseña</small></a>
+        </form>
+
+        <p class="m-t">
+            <small>Virginio Gomez &copy; {% now "Y" %}</small>
+        </p>
+    </div>
+{% endblock %}

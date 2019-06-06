@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Producto-Editar</title>
+  </head>
+{% extends 'base/base.html'%}
+{%block content%}
+  <div class="row">
+      <div class="col-xs-5">
+          <h1>EDITAR PRODUCTO</h1>
+          <hr>
+          <form method="POST" action="">
+              {% csrf_token%}
+              {{form.as_p}}
+              <hr>
+              <input type='submit' class="btn btn-primary" value='Guardar Cambios'>
+            </form>
+      </div>
+  </div>
+  <br>
+</html>
+{%endblock%}

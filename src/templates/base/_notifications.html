@@ -1,0 +1,25 @@
+<script>
+function showToast(level, message) {
+  if (level == 'success' || level == 'info') {
+    toastr.info(message);
+    return;
+  }
+
+  if (level == 'warning' || level == 'error') {
+    toastr.error(message);
+    return;
+  }
+
+  toastr.warning(message);
+}
+
+{% if messages %}
+    {% for message in messages %}
+      {% if message.tags %}
+        showToast('{{ message.tags }}', '{{ message }}');
+      {% else %}
+        showToast('success', '{{ message }}');
+      {% endif %}
+    {% endfor %}
+{% endif %}
+</script>

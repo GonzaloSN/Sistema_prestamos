@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Prestamo-Listar</title>
+</head>
+{% extends 'base/base.html' %}
+{% block content %}
+<div id="" class="gray-bg"><br>
+	{% if object_list %}
+	<div class="table-responsive"/>
+	<h1>LISTA DE DEVOLUCIONES ATRASADAS</h1>
+	<hr>
+
+	<div class="search-form" class="col-md-4">
+		<form id="search-form" action="" method="get">
+		  <div class="input-group">
+			<input type="text" name="q" class="form-control" value="{{ q }}" placeholder="Buscar: Usuarios o Codigo PC" autofocus/>
+			<span class="input-group-addon" onclick="document.getElementById('search-form').submit()">
+			  <i class="fas fa-search"></i>
+			</span>
+		  </div>
+		</form>
+	  </div>
+	<hr>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td><strong>Usuario</strong></td>
+				<td><strong>Producto</strong></td>
+				<td><strong>Fecha Prestamo</strong></td>
+				<td><strong>Fecha Devolucion</strong></td>
+				<td><strong>Fecha Real Devolucion</strong></td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for prestamos_list in object_list %}
+			<tr>
+				<td>{{prestamos_list.id_usuario}}</td>
+				<td>{{prestamos_list.id_producto}}</td>
+				<td>{{prestamos_list.fecha_prestamo}}</td>
+				<td>{{prestamos_list.fecha_devolucion}}</td>
+				<td>{{prestamos_list.fecha_actual}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% else %}
+	<h1>No hay registros de devoluciones</h1>
+	<hr>
+	<!--<td>-->
+		<!--<a class="btn btn-primary" href="{% url 'prestamos:prestamo_crear' %}"> <i class="ion-plus-round"></i> Agregar Registro </a>-->
+	<!--</td>-->
+	{% endif %}
+</div>
+</div>
+ </html>
+{% endblock %}

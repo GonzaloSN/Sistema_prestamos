@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>SISTEMA | Dashboard </title>
+
+</head>
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+{% block head %}
+<div class="row wrapper border-bottom white-bg page-heading ng-scope">
+    <div class="col-lg-10">
+        <h2>Inicio</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Inicio</strong>
+            </li>
+            <li></li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget lazur-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="fas fa-archive fa-4x"></i>
+                <h3>Total de Productos</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj1_1 }}</h1>
+                <small>En el sistema</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-info" id="dialog"><i class="fas fa-bars"></i> Detalles</a>
+             </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget navy-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="fas fa-hands-helping fa-4x"></i>
+                <h3>Prestamos Activos</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj2 }}</h1>
+                <small>En Prestamo</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-primary" id="dialog1"><i class="fas fa-bars"></i> Detalles</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget red-bg p-h-xs p-w-xs text-center">
+               <div class="m-b-md">
+                   <i class="fas fa-exclamation-triangle fa-4x"></i>
+                <h3>Prestamos Atrasados</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj4 }}</h1>
+                <small>Atrasados</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-danger" id="c"><i class="fas fa-bars"></i> Detalles</a>
+
+             </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget blue-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="fas fa-check-square fa-4x"></i>
+                <h3>Productos Disponibles</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj5 }}</h1>
+                <small>Disponibles</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-success" id="d"><i class="fas fa-bars"></i> Detalles</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget yellow-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="far fa-calendar-check fa-4x"></i>
+                <h3>Reservas de Laboratorio</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj3 }}</h1>
+                <small>En Reserva</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-warning" id="e"><i class="fas fa-bars"></i> Detalles</a>
+
+             </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+             <div class="widget lazur-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="fas fa-wrench fa-4x"></i>
+                <h3>Productos en Mantención</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj6 }}</h1>
+                <small>En Reparación</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-info" id="reparacion"><i class="fas fa-bars"></i> Detalles</a>
+             </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget navy-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="far fa-handshake fa-4x"></i>
+                <h3>Productos en Prestamo</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj8 }}</h1>
+                <small>Prestados</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-primary" id="prestados"><i class="fas fa-bars"></i> Detalles</a>
+             </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget red-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="fas fa-trash-alt fa-4x"></i>
+                <h3>Productos Dados de Baja</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj7 }}</h1>
+                <small>Dados de Baja</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-danger" id="baja"><i class="fas fa-bars"></i> Detalles</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="widget blue-bg p-h-xs p-w-xs text-center">
+                <div class="m-b-md">
+                     <i class="fas fa-users fa-4x"></i>
+                <h3>Usuario del Sistema</h3>
+               </div>
+
+                <h1 class="no-margins">{{ obj9 }}</h1>
+                <small>Docentes</small>
+                <br>
+                 <br>
+                <a href="#" class="btn btn-success" id="usuarios"><i class="fas fa-bars"></i> Detalles</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+</html>

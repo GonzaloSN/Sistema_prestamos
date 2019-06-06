@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Prestamos</title>
+</head>
+{% extends 'base/base.html' %}
+{% block content %}
+<div class='form-group'>
+    <div class="row">
+        <div class="col-lg-1">
+            <a href="{% url 'reportes:report_activo' %}" class="btn btn-info btn-block">
+                <span class=""></span>
+            </a>
+        </div>
+    </div>
+</div>
+</html>
+{% endblock %}

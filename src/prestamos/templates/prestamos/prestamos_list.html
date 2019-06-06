@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Prestamo-Listar</title>
+</head>
+{% extends 'base/base.html' %}
+{% block content %}
+<div id="" class="gray-bg"><br>
+	{% if object_list %}
+	<div class="table-responsive"/>
+	<h1>LISTA DE PRESTAMOS</h1>
+	<hr>
+
+	<div class="search-form" class="col-md-4">
+		<form id="search-form" action="" method="get">
+		  <div class="input-group">
+			<input type="text" name="q" class="form-control" value="{{ q }}" placeholder="Buscar: Usuarios" autofocus/>
+			<span class="input-group-addon" onclick="document.getElementById('search-form').submit()">
+			  <i class="fas fa-search"></i>
+			</span>
+		  </div>
+		</form>
+	  </div>
+	<hr>
+	<!--<h3>Estados de Prestamo: 1 = Activo | 0 = Inactivo</h3>-->
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<!--<td>Estado</td>-->
+				<td>Usuario</td>
+				<td>Producto</td>
+				<td>Fecha Prestamo</td>
+				<td>Fecha Devolucion</td>
+				<td>Observaciones</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for prestamos_list in object_list %}
+			<tr>
+				<!--<td>{{prestamos_list.estado}}</td>-->
+				<td>{{prestamos_list.id_usuario}}</td>
+				<td>{{prestamos_list.id_producto}}</td>
+				<td>{{prestamos_list.fecha_prestamo}}</td>
+				<td>{{prestamos_list.fecha_devolucion}}</td>
+				<td>{{prestamos_list.observaciones}}</td>
+
+			<!--{% if prestamos_list.estado == '1' %}-->
+        <td style="border :1px solid transparent ">
+			<a class="btn btn-primary" href="{% url 'prestamos:prestamo_editar' prestamos_list.id %}"><i class="ion-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i> </a>
+			<a class="btn btn-success" href="{% url 'prestamos:devolucion' prestamos_list.id %}"><i class="fas fa-undo-alt" data-toggle="tooltip" data-placement="top" title="Devolucion"></i> </a>
+		</td>
+			<!--{% else %}-->
+		<!--<td style="border :1px solid transparent ">-->
+			<!--<a class="btn btn-danger" href="{% url 'prestamos:prestamo_eliminar' prestamos_list.id %}"> <i class="ion-android-delete" data-toggle="tooltip" data-placement="top" title="Eliminar"></i> </a>-->
+        <!--</td>-->
+			<!--</tr>-->
+			<!--{% endif %}-->
+			{% endfor %}
+
+		<script>
+			$(function () {
+				$('[data-toggle="tooltip"]').tooltip()
+            })
+		</script>
+
+		</tbody>
+	</table>
+	{% else %}
+	<h1>No hay registros de prestamos</h1>
+	<hr>
+	<td>
+		<a class="btn btn-primary" href="{% url 'prestamos:prestamo_crear' %}"> <i class="ion-plus-round"></i> Agregar Registro </a>
+	</td>
+	{% endif %}
+</div>
+</div>
+</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row filter-header">
+        <div class="col-md-4">
+            <form id="search-form" action="" method="get">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" value="{{ q }}" placeholder="Buscar por: usuario, nombres o email" autofocus/>
+                    <span class="input-group-addon" onclick="document.getElementById('search-form').submit()">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+        {% if perms.auth.add_user %}
+        <div class="col-md-4">
+            <a href="{% url 'usuario:registrar' %}" class="btn btn-info pull-right">
+                <i class="fas fa-user-plus" aria-hidden="true"></i> Nuevo usuario
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Listado de usuarios</h5>
+                </div>
+
+                <div class="ibox-content">
+                    {% render_table table %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Sistema Prestamos | Prestamo-Editar</title>
+  </head>
+{% extends 'base/base.html'%}
+{%block content%}
+  <div class="row">
+      <div class="col-xs-5">
+          <h1>GENERAR DEVOLUCIÓN</h1>
+          <div class="alert alert-danger" role="alert">
+              Para generar devolucion el estado debe estar <strong>"Inactivo"</strong>, si la devolución
+              presenta detalles debe añadir una observacion.
+          </div>
+
+          <form method="POST" action="">
+              {% csrf_token%}
+              {{form.as_p}}
+              <hr>
+
+                <input id="validate" class="btn btn-primary" value='Realizar Devolucion'>
+
+        </form>
+      </div>
+  </div>
+
+  <script>
+  function ok(){
+	alertify.success("Este prestamo fue guardado en <b>HISTORIAL DEVOLUCIONES.</b></a>");
+	return false;
+  }
+
+  function alerta() {
+      alertify.error("El estado debe quedar <strong>\"Inactivo\"</strong>");
+  }
+    $('#validate').click(function() {
+        var estado = document.getElementById("estado");
+        var seleccion = estado.options[estado.selectedIndex].text;
+        if (seleccion === "Activo") {
+            alerta();
+            document.getElementById("estado").focus();
+        } else {
+            this.form.submit();
+            ok();
+        }
+    });
+
+</script>
+
+  <br>
+</html>
+{%endblock%}
